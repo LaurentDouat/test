@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.9.2/dash.all.debug.js"></script>
+<style>
+    video {
+       width: 1280px;
+       height: 720px;
+    }
+</style>
+	<body>
+		<video  autoplay controls></video>
+	</body>
+<script>
+    function init() {
+        const protData = {
+            "com.widevine.alpha": {
+                "serverURL": "https://ocs-int-cdm.labgency.ws/cdm/license?s=ofr.ocs&drm=widevine&key=n203nIYpM5WIvs6HiIq%2Bag%3D%3D&key-id=CvPMDZfkOkym0zy3tmWOIA%3D%3D"
+            }
+        };
+        var video,
+            player,
+            url = "https://ocsstreaming.akamaized.net/keep/THENIGH0103W0114141CJITS480238-79B2/259A81AE-6F85-4C49-92CA-E60368277341/THENIGH0103W0114141CJITS480238-79B2.259A81AE-6F85-4C49-92CA-E60368277341.X.mpd";
+
+        video = document.querySelector("video");
+        player = dashjs.MediaPlayer().create();
+        player.initialize(video, url, true);
+        player.setProtectionData(protData);
+        console.log("END INIT");
+    }
+	console.log("START INIT");
+	document.addEventListener('DOMContentLoaded', init);
+</script>
+</html>
